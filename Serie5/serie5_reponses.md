@@ -83,11 +83,14 @@ void main() {
 **a)** Quel est l'ordre exact d'affichage ?
 
 > **Réponse :** 
-
+1
+4
+3
+2
 **b)** Pourquoi `3` s'affiche-t-il après `4` alors que le délai est nul ?
 
 > **Réponse :** 
-
+Même si le délai est nul (Duration.zero), l'exécution de print('3') est programmée dans la file des tâches asynchrones (Event Queue). Le programme continue donc son exécution normale et affiche 4 avant d'exécuter print('3').
 ---
 
 ### Exercice 3 — Que fait `await` exactement ? — 2 pts
@@ -112,15 +115,21 @@ void main() async {
 **a)** Donnez l'ordre exact d'affichage.
 
 > **Réponse :** 
-
+a
+calcul : début
+b
+(1 seconde après)
+calcul : fin
+c : 5
 **b)** Pourquoi `calcul : début` s'affiche-t-il avant `b` ?
 
 > **Réponse :** 
-
+Lorsqu'on appelle calculer(), la fonction async commence immédiatement son exécution et affiche calcul : début avant de rencontrer await. Ensuite, elle suspend son exécution et le programme continue avec print('b').
 **c)** Quel est le type de la variable `attente` ? Et celui de `x` ?
 
 > **Réponse :** 
-
+attente : Future<int> (elle contient un entier qui sera disponible plus tard).
+x : int (elle contient la valeur finale récupérée avec await
 ---
 
 ### Exercice 4 — Trouver les erreurs — 2 pts
